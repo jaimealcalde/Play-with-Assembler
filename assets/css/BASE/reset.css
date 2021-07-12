@@ -1,0 +1,64 @@
+/**
+ * RESET
+ */
+
+* {
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+  margin: 0px;
+  padding: 0px;
+}
+
+html {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: transparent;
+}
+
+body,
+html {
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  transform: translateX(0);
+  transition: 0.25s ease-in-out;
+}
+
+section {
+  padding: 0;
+  transition: 0.25s ease-in;
+  position: relative;
+  min-width: 100%;
+  overflow: auto;
+  background-color: #f4f4f4;
+}
+
+textarea:focus,
+input:focus,
+button:focus {
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+}
