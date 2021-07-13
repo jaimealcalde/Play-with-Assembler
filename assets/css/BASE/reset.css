@@ -19,7 +19,13 @@ html {
   outline: transparent;
 }
 
-main {
+body,
+html {
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+}
+
+.main {
   display: flex;
   flex-direction: row;
   transform: translateX(0);
