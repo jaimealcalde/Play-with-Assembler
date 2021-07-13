@@ -25,7 +25,7 @@ html {
   overflow-x: hidden;
 }
 
-main {
+.main {
   display: flex;
   flex-direction: row;
   transform: translateX(0);
