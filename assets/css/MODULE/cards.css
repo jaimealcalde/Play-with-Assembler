@@ -2,6 +2,17 @@
  * MODULE - CARDS
  */
 
-.card{
+.grid{
+  display: grid;
+  grid-template-areas: 'auto auto auto auto';
+}
 
+.card{
+  width: 100%;
+  max-width: 100px;
+}
+
+.card__img{
+  width: 100%;
+  max-width: 100px;
 }
