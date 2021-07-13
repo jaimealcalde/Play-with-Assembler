@@ -1,0 +1,16 @@
+/**
+ * LAYOUT - RESET
+ */
+
+.main-container {
+}
+
+.container {
+  max-width: 460px;
+  margin: 3rem auto;
+  padding: 3rem;
+  border: 1px solid #ddd;
+  border-radius: .25rem;
+  background-color: white;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}

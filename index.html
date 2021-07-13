@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,7 +11,8 @@
   <!-- Style tags -->
   <link rel="stylesheet" href="assets/css/styles.css" />
 </head>
-<body>  
+
+<body>
   <div class="main-container">
 
     <!-- Header -->
@@ -23,10 +25,26 @@
 
       <!-- Form -->
       <section class="container">
-        <form action="" class="form" id="form">
-          <label for="username" class="form__label">Choose username</label>
-          <input type="text" class="form__username" value="">
-          <input type="submit" class="form__send">
+        <h2 class="form__title">Create a new account</h2>
+        <form action="#" class="form" id="form">
+          <div class="form__group">
+            <label for="username" class="form__label">Username</label>
+            <input type="text" id="username" class="form__input" minlength="8" maxlength="20" placeholder="" required />
+            <span class="form__error-message"></span>
+            <svg class="icon icon-success hidden hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd" />
+            </svg>
+            <svg class="icon icon-error hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <input type="submit" class="form__send" />
         </form>
       </section><!-- Form -->
 
@@ -98,15 +116,18 @@
           <img class="card__img card__img--back" href="" />
         </div>
       </section><!-- Game -->
-      
+
       <!-- Ranking -->
       <section class="container">
 
       </section><!-- Ranking -->
     </main><!-- Main -->
   </div>
-<!-- Script tags -->
-<script src="assets/js/scripts.js"></script>
-<script src="assets/js/clock.js"></script>
+
+  <!-- Script tags -->
+  <script src="assets/js/functions.js"></script>
+  <script src="assets/js/variables.js"></script>
+  <script src="assets/js/clock.js"></script>
 </body>
+
 </html>
