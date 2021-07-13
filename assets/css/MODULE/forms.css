@@ -1,0 +1,76 @@
+/**
+ * MODULE - FORMS
+ */
+
+.form__title {
+  margin-bottom: 2rem;
+}
+
+.form__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.form__label{
+  font-weight: bold;
+  display: block;
+  color: #333;
+  margin-bottom: .25rem;
+  color: #2d3748;
+}
+
+.form__input {
+  appearance: none;
+  display: block;
+  width: 100%;
+  color: #2d3748;
+  border: 1px solid #cbd5e0;
+  line-height: 1.25;
+  background-color: white;
+  padding: .65rem .75rem;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
+}
+
+.form__input::placeholder {
+  color: #a0aec0;
+}
+
+.form__input.input-error {
+  border: 1px solid red;
+}
+
+.form__input.input-error:focus {
+    border: 1px solid red;
+  }
+
+.form__input:focus {
+  outline: none;
+  border: 1px solid #a0aec0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  background-clip: padding-box;
+}
+
+.form__error-message {
+  font-size: .85rem;
+  color: red;
+}
+
+.form__send {
+  background-color: blueviolet;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: .25rem;
+  color: white;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.form__send:hover {
+  filter: brightness(110%);
+}

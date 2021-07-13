@@ -1,0 +1,21 @@
+/**
+ * MODULE - ICONS
+ */
+
+.icon {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 32px;
+  right: 5px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.icon.icon-success {
+  fill: green;
+}
+
+.icon.icon-error {
+  fill: red;
+}
