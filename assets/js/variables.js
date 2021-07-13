@@ -5,7 +5,6 @@
  */
 var user = {
   username: '',
-  score: '',
   attempts: '',
   time: ''
 };
@@ -14,3 +13,10 @@ var user = {
  * Users Array
  */
 var users = [];
+
+/**
+ * Variables of the DOM
+ */
+var main = document.querySelector(".main"); // access the main section
+var headerExtra = document.querySelector(".header__extra"); // access extra information on header
+var positionMain = 0;

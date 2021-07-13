@@ -29,11 +29,11 @@ html {
   display: flex;
   flex-direction: row;
   transform: translateX(0);
+  transition: 0.25s ease-in-out;
 }
 
 section {
   padding: 0;
-  transition: 0.25s ease-in;
   position: relative;
   min-width: 100%;
   overflow: auto;
