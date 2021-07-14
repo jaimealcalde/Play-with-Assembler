@@ -3,20 +3,37 @@
  */
 
 .board{
-  display: grid;
-  grid-template-areas: 'auto auto auto auto';
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+  margin: 0 auto;
+  border-radius: 6px;
+  max-width: 580px;
+}
+
+.board--gray{
+  background-image: linear-gradient(45deg, #DFE1E6 0%, #F2F3F7 100%);
+  box-shadow: 0px 15px 15px -5px #bfc2ca;
 }
 
 .card{
-  width: 100%;
-  max-width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 10px;
+  width: calc(25% - 20px);
   height: 100%;
-  background-color: #E6E6E6;
   cursor: pointer;
   perspective: 1000px;
   transform-style: preserve-3d;
   transition: transform 0.5s;
-  
+  border-radius: 6px;
+}
+
+.card--white{
+  background: rgb(255, 255, 255);
+  box-shadow: 8px 8px 8px -4px #c8ccd4;
 }
 
 .card.flip {
@@ -28,12 +45,6 @@
   max-width: 100px;
   visibility: hidden;
 }
-
-/* .open {
-  background-image: linear-gradient(-135deg, #77D037 0%, #429321 100%);
-  box-shadow: 8px 8px 8px -4px rgb(86 196 99 / 50%);
-  position: relative;
-} */
 
 .flip .card__img{
   visibility: visible;
@@ -53,4 +64,23 @@
 .pulse {
   -webkit-animation-name: pulse;
   animation-name: pulse;
+}
+
+@media (max-width: 575px) {
+  .board{
+    padding: 7.5px;
+  }
+  .card{
+    margin: 10px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 450px) {
+  .board{
+    padding: 5px;
+  }
+  .card{
+    padding: 10px;
+  }
 }

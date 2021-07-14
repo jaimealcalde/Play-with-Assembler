@@ -116,7 +116,7 @@ function flipCard() {
  */
 function flipAllCards() {
   cards.forEach(card => {
-    card.classList.remove('open');
+    card.classList.remove('flip');
   });
 }
 
