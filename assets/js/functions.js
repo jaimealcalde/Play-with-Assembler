@@ -141,14 +141,12 @@ function attemptCounter() {
   attempts++;
 }
 
-
 const cards = document.querySelectorAll('.card');
 cards.forEach(card => card.addEventListener('click', flipCard));
 
-let hasFlippedCard = true;
-let firstCard, secondCard;
-let movements = 0;
-let arrayCards = []
+var firstCard, secondCard;
+var movements = 0;
+var arrayCards = []
 
 function removeFlipCard(params) {
   firstCard.classList.remove('flip');
@@ -226,3 +224,36 @@ function flipAllCards() {
     card.style.order = ramdomPos;
   });
 })();
+/**
+ *  Ranking
+ */
+
+// Everytime a player finishes his game, his info will be save to the list
+function addUserList() {
+
+  users.push();
+}
+
+function ranking() {
+  var userList = users.sort((a, b) => { return a.time - b.time });
+  if (userList.length != 0) {
+    containerRanking.innerHTML = `
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Time</th>
+        <th>Attempts</th>
+      </tr>`
+
+    for (var i = 0; i < userList.length; i++) {
+      containerRanking.innerHTML +=
+        `<tr>
+        <td>${userList[i].name}</td>
+        <td>${userList[i].time}</td>
+        <td>${userList[i].attempts}</td>
+      </tr><br>`
+    };
+
+    containerRanking.innerHTML += `</table>`
+  }
+}
