@@ -1,24 +1,8 @@
 'use strict';
 
-var minutesLabel = document.getElementById("minutes");
-var secondsLabel = document.getElementById("seconds");
-var totalSeconds = 0;
-
-function setTime() {
-  ++totalSeconds;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-}
-
-function pad(val) {
-  var valString = val + "";
-  if (valString.length < 2) {
-    return "0" + valString;
-  } else {
-    return valString;
-  }
-}
-
+/**
+ * Start game
+ */
 function startGame() {
   setInterval(setTime, 1000);
   moveMainSection();
@@ -108,7 +92,6 @@ validator.initialize()
 /**
  * Move between sections
  */
-
 function moveMainSection() {
   // var positionMain;
   positionMain -= 100;
@@ -147,8 +130,10 @@ var movements = 0;
 var arrayCards = []
 
 function removeFlipCard(params) {
-  firstCard.classList.remove('flip');
-  secondCard.classList.remove('flip');
+  cards.forEach(card => {
+    card.classList.remove('flip');
+  });
+
   firstCard = undefined;
   secondCard = undefined;
 }
@@ -166,9 +151,10 @@ function openedCard() {
  *  End game
  */
 function endGame() {
-  if (arrayCards.length === 1) {
+  if (arrayCards.length === 8) {
     user['attempts'] = movements;
     user['time'] = totalSeconds;
+    totalSeconds = 0;
     setTimeout(moveMainSection, 1000);
     console.log(user)
   }
@@ -194,6 +180,7 @@ function checkForMatch() {
 function flipCard() {
   if (this.classList.contains('open')) return null
   if (this.classList.contains('flip')) return null
+  if (secondCard) return null
 
   this.classList.add('flip');
 
@@ -237,11 +224,9 @@ function ranking() {
   var userList = users.sort((a, b) => { 
     if (a.time != b.time && a.attempts != b.attempts) {
       return a.time - b.time; 
-    } else if (a.time == b.time && a.attempts != b.attempts) {
+    } else if (a.time === b.time && a.attempts != b.attempts) {
       return a.attempts - b.attempts; 
-    } else if (a.time == b.time && a.attempts == b.attempts) {
-      return a.username.toLowerCase() - b.username.toLowerCase(); 
-    }
+    } 
   });
 
   if (userList.length != 0) {
