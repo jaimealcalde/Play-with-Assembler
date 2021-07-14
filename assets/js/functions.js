@@ -1,30 +1,30 @@
 'use strict';
 
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
 function startGame() {
-  let fiveMinutes = 60 * 1,
-    display = document.querySelector('#time');
-  startTimer(fiveMinutes, display);
-  console.log(display);
-
+  setInterval(setTime, 1000);
   moveMainSection();
+  setTimeout(flipAllCards, 3000);
 }
 
-function startTimer(duration, display) {
-  let timer = duration, minutes, seconds;
-  setInterval(function () {
-    minutes = parseInt(timer / 60, 10)
-    seconds = parseInt(timer % 60, 10);
-
-    minutes = minutes < 10 ? "0" + minutes : minutes;
-    seconds = seconds < 10 ? "0" + seconds : seconds;
-
-    display.textContent = minutes + ":" + seconds;
-
-    if (--timer < 0) {
-      timer = duration;
-    }
-  }, 1000);
-}
 class FormValidator {
   constructor(form, fields) {
     this.form = form
@@ -127,29 +127,10 @@ function moveMainSection() {
   }
 }
 
-/**
- *  Time Counter
- */
-
-var seconds = 0; // init variable for time counting, start at 0 
-var time;
-
-// The timer() function is invoked on the first card click
-function timeCounter() {
-  time = setInterval(function () {
-    seconds++;
-    if (seconds === 60) {
-      alert("Time out!");
-      return;
-    }
-  }, 1000);
-}
-
 // Stop the timeCounter once the user has matched all 16 cards
 function stopTimeCounter() {
   clearInterval(time);
 }
-
 
 /**
  *  Attempt Counter
@@ -159,3 +140,89 @@ function attemptCounter() {
   // increase the number of attempts for every pair checked
   attempts++;
 }
+
+
+const cards = document.querySelectorAll('.card');
+cards.forEach(card => card.addEventListener('click', flipCard));
+
+let hasFlippedCard = true;
+let firstCard, secondCard;
+let movements = 0;
+let arrayCards = []
+
+function removeFlipCard(params) {
+  firstCard.classList.remove('flip');
+  secondCard.classList.remove('flip');
+  firstCard = undefined;
+  secondCard = undefined;
+}
+
+function openedCard() {
+  arrayCards.push(firstCard);
+  firstCard.classList.add('open');
+  secondCard.classList.add('open');
+  removeFlipCard()
+
+  endGame()
+}
+
+/**
+ *  End game
+ */
+function endGame() {
+  if (arrayCards.length === 1) {
+    user['attempts'] = movements;
+    user['time'] = totalSeconds;
+    setTimeout(moveMainSection, 1000);
+    console.log(user)
+  }
+}
+
+/**
+ *  Check for match
+ */
+function checkForMatch() {
+  if (firstCard.dataset.name != secondCard.dataset.name) {
+    movements++;
+    setTimeout(removeFlipCard, 1000);
+  }
+
+  if (firstCard.dataset.name === secondCard.dataset.name) {
+    openedCard();
+  }
+}
+
+/**
+ *  Flip card
+ */
+function flipCard() {
+  if (this.classList.contains('open')) return null
+  if (this.classList.contains('flip')) return null
+
+  this.classList.add('flip');
+
+  if (!firstCard) return firstCard = this;
+
+  secondCard = this;
+
+  checkForMatch();
+}
+
+/**
+ *  Flip all cards
+ */
+function flipAllCards() {
+  cards.forEach(card => {
+    card.classList.remove('open');
+  });
+}
+
+/**
+ *  Shuffle cards
+ */
+(function shuffleCards() {
+  cards.forEach(card => {
+    let ramdomPos = Math.floor(Math.random() * 16);
+    card.style.order = ramdomPos;
+  });
+})();

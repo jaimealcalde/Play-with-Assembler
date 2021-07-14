@@ -10,10 +10,47 @@
 .card{
   width: 100%;
   max-width: 100px;
+  height: 100%;
   background-color: #E6E6E6;
+  cursor: pointer;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  
+}
+
+.card.flip {
+  transform: rotateY(180deg);
 }
 
 .card__img{
   width: 100%;
   max-width: 100px;
+  visibility: hidden;
+}
+
+/* .open {
+  background-image: linear-gradient(-135deg, #77D037 0%, #429321 100%);
+  box-shadow: 8px 8px 8px -4px rgb(86 196 99 / 50%);
+  position: relative;
+} */
+
+.flip .card__img{
+  visibility: visible;
+}
+
+.open .card__img{
+  visibility: visible;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.pulse {
+  -webkit-animation-name: pulse;
+  animation-name: pulse;
 }
