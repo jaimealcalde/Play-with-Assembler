@@ -14,19 +14,19 @@ var user = {
  */
 var users = [
   {
-    name: "A",
-    attempts: 30,
-    time: 40,
-  },
-  {
-    name: "B",
+    username: "A",
     attempts: 20,
     time: 10,
   },
   {
-    name: "C",
+    username: "B",
+    attempts: 20,
+    time: 10,
+  },
+  {
+    username: "C",
     attempts: 25,
-    time: 30,
+    time: 10,
   }
 ];
 

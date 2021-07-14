@@ -38,7 +38,6 @@ class FormValidator {
 
   validateOnSubmit() {
     let self = this;
-
     this.form.addEventListener('submit', e => {
       e.preventDefault();
       self.fields.forEach(field => {
@@ -46,7 +45,6 @@ class FormValidator {
         self.validateFields(input);
         user[`${field}`] = input.value;
       });
-
       startGame()
     });
 
@@ -230,12 +228,22 @@ function flipAllCards() {
 
 // Everytime a player finishes his game, his info will be save to the list
 function addUserList() {
-
-  users.push();
+  users.push(user);
+  console.log(users)
 }
 
+// users.sort((a, b) => {return a.time - b.time });
 function ranking() {
-  var userList = users.sort((a, b) => { return a.time - b.time });
+  var userList = users.sort((a, b) => { 
+    if (a.time != b.time && a.attempts != b.attempts) {
+      return a.time - b.time; 
+    } else if (a.time == b.time && a.attempts != b.attempts) {
+      return a.attempts - b.attempts; 
+    } else if (a.time == b.time && a.attempts == b.attempts) {
+      return a.username.toLowerCase() - b.username.toLowerCase(); 
+    }
+  });
+
   if (userList.length != 0) {
     containerRanking.innerHTML = `
     <table class="table">
@@ -248,7 +256,7 @@ function ranking() {
     for (var i = 0; i < userList.length; i++) {
       containerRanking.innerHTML +=
         `<tr>
-        <td>${userList[i].name}</td>
+        <td>${userList[i].username}</td>
         <td>${userList[i].time}</td>
         <td>${userList[i].attempts}</td>
       </tr><br>`
