@@ -9,6 +9,8 @@ function startGame() {
   setTimeout(flipAllCards, 3000);
 }
 
+
+
 /**
  * Move between sections
  */
@@ -71,12 +73,15 @@ function openedCard() {
  *  End game
  */
 function endGame() {
-  if (arrayCards.length === 8) {
+  if (arrayCards.length === 1) {
     user['attempts'] = movements;
     user['time'] = totalSeconds;
     totalSeconds = 0;
     setTimeout(moveMainSection, 1000);
     console.log(user)
+    addUserList();
+    sortPlayers();
+    showRanking();
   }
 }
 
@@ -135,30 +140,43 @@ function flipAllCards() {
 
 // Everytime a player finishes his game, his info will be save to the list
 function addUserList() {
-
-  users.push();
+  users.push(user);
 }
 
-function ranking() {
-  var userList = users.sort((a, b) => { return a.time - b.time });
-  if (userList.length != 0) {
-    containerRanking.innerHTML = `
+var usersList;
+function sortPlayers() {
+  usersList = users.sort((a, b) => { 
+    if (a.time != b.time && a.attempts != b.attempts) {
+      return a.time - b.time; 
+    } else if (a.time === b.time && a.attempts != b.attempts) {
+      return a.attempts - b.attempts; 
+    } 
+  });
+}
+
+// Show ranking of players 
+function showRanking() {
+  if (usersList.length != 0) {
+
+    var html = `
     <table class="table">
-      <tr>
-        <th>Name</th>
-        <th>Time</th>
-        <th>Attempts</th>
+      <tr class="table__row">
+        <th class="table__header">Name</th>
+        <th class="table__header">Time</th>
+        <th class="table__header"> Attempts</th>
       </tr>`
 
-    for (var i = 0; i < userList.length; i++) {
-      containerRanking.innerHTML +=
-        `<tr>
-        <td>${userList[i].name}</td>
-        <td>${userList[i].time}</td>
-        <td>${userList[i].attempts}</td>
-      </tr><br>`
+    for (var i = 0; i < usersList.length; i++) {
+      html +=
+        `<tr class="table__row">
+        <td class="table__cell">${usersList[i].username}</td>
+        <td class="table__cell">${usersList[i].time}</td>
+        <td class="table__cell">${usersList[i].attempts}</td>
+      </tr>`
     };
 
-    containerRanking.innerHTML += `</table>`
+    html += `</table>`
+
+    containerRanking.innerHTML = html;
   }
 }
