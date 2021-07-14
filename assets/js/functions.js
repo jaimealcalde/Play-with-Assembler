@@ -159,3 +159,40 @@ function attemptCounter() {
   // increase the number of attempts for every pair checked
   attempts++;
 }
+
+
+/**
+ *  Ranking
+ */
+
+// Everytime a player finishes his game, his info will be save to the list
+function addUserList() {
+
+  users.push();
+}
+
+function ranking() {
+  var userList = users.sort((a, b) => {return a.time - b.time});
+  if(userList.length != 0) {
+    containerRanking.innerHTML = `
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Time</th>
+        <th>Attempts</th>
+      </tr>`
+
+    for (var i = 0; i < userList.length; i++) {
+      containerRanking.innerHTML +=
+      `<tr>
+        <td>${userList[i].name}</td>
+        <td>${userList[i].time}</td>
+        <td>${userList[i].attempts}</td>
+      </tr><br>`
+    };    
+    
+    containerRanking.innerHTML += `</table>`
+  }
+
+
+}
