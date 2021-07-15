@@ -2,6 +2,10 @@
  * MODULE - HEADER
  */
 
+.header {
+  padding: 1em;
+}
+
 .header__title{
   text-align: center;
 }

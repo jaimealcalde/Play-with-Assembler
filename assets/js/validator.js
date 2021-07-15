@@ -1,86 +1,83 @@
-'use strict';
+/**
+ * Validate on submit
+ */
+function validateOnSubmit(e) {
+  e.preventDefault();
+
+  // set the username in the user object
+  field = "username";
+  user[`${field}`] = document.querySelector(`#${field}`).value;
+
+  // start the game
+  startGame();
+}
 
 /**
- * Form validator
+ * Validate on entry
  */
+function validateOnEntry() {
+  let self = this;
+  field = "username";
+  const input = document.querySelector(`#${field}`);
 
-class FormValidator {
-  constructor(form, fields) {
-    this.form = form
-    this.fields = fields
+  self.addEventListener('input', e => {
+    e.preventDefault();
+
+    validateFields(input);
+  })
+}
+
+/**
+ * Validate fields
+ */
+function validateFields(field) {
+  // Check maxlength
+  if (field.value.length > 20) {
+    this.setStatus(field, `${field.previousElementSibling.innerText} cannot have more than 20 characters`, "error")
+  } else {
+    this.setStatus(field, null, "success")
   }
 
-  initialize() {
-    this.validateOnEntry()
-    this.validateOnSubmit()
-  }
-
-  validateOnSubmit() {
-    let self = this;
-
-    this.form.addEventListener('submit', e => {
-      e.preventDefault();
-      self.fields.forEach(field => {
-        const input = document.querySelector(`#${field}`);
-        self.validateFields(input);
-        user[`${field}`] = input.value;
-      });
-
-      startGame()
-    });
-
-  }
-
-  validateOnEntry() {
-    let self = this;
-    this.fields.forEach(field => {
-      const input = document.querySelector(`#${field}`);
-      input.addEventListener('input', event => {
-        self.validateFields(input);
-      })
-    })
-  }
-
-  validateFields(field) {
-
-    // Check maxlength
-    if (field.value.length > 20) {
-      this.setStatus(field, `${field.previousElementSibling.innerText} cannot have more than 20 characters`, "error")
-    } else {
-      this.setStatus(field, null, "success")
-    }
-
-    // Check minlength
-    if (field.value.length < 8) {
-      this.setStatus(field, `${field.previousElementSibling.innerText} cannot have less than 8 characters`, "error")
-    } else {
-      this.setStatus(field, null, "success")
-    }
-  }
-
-  setStatus(field, message, status) {
-    const successIcon = field.parentElement.querySelector('.icon-success')
-    const errorIcon = field.parentElement.querySelector('.icon-error')
-    const errorMessage = field.parentElement.querySelector('.form__error-message')
-
-    if (status === "success") {
-      if (errorIcon) { errorIcon.classList.add('hidden') }
-      if (errorMessage) { errorMessage.innerText = "" }
-      successIcon.classList.remove('hidden')
-      field.classList.remove('input-error')
-    }
-
-    if (status === "error") {
-      if (successIcon) { successIcon.classList.add('hidden') }
-      field.parentElement.querySelector('.form__error-message').innerText = message
-      errorIcon.classList.remove('hidden')
-      field.classList.add('input-error')
-    }
+  // Check minlength
+  if (field.value.length < 8) {
+    this.setStatus(field, `${field.previousElementSibling.innerText} cannot have less than 8 characters`, "error")
+  } else {
+    this.setStatus(field, null, "success")
   }
 }
 
-const form = document.querySelector('.form')
-const fields = ["username"]
+/**
+ * Messages
+ */
+function setStatus(field, message, status) {
+  const successIcon = field.parentElement.querySelector('.icon-success')
+  const errorIcon = field.parentElement.querySelector('.icon-error')
+  const errorMessage = field.parentElement.querySelector('.form__error-message')
 
-const validator = new FormValidator(form, fields)
-validator.initialize()
+  if (status === "success") {
+    if (errorIcon) { errorIcon.classList.add('hidden') }
+    if (errorMessage) { errorMessage.innerText = "" }
+    successIcon.classList.remove('hidden')
+    field.classList.remove('input-error')
+  }
+
+  if (status === "error") {
+    if (successIcon) { successIcon.classList.add('hidden') }
+    field.parentElement.querySelector('.form__error-message').innerText = message
+    errorIcon.classList.remove('hidden')
+    field.classList.add('input-error')
+  }
+}
+
+/**
+ * Get query Selectors
+ */
+const form = document.querySelector('.form');
+const username = document.querySelector('#username');
+const validator = new FormData(form);
+
+/**
+ * Event listeners
+ */
+username.addEventListener('keydown', validateOnEntry);
+form.addEventListener('submit', validateOnSubmit);

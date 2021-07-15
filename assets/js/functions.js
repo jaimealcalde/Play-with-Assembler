@@ -6,10 +6,10 @@
 function startGame() {
   setInterval(setTime, 1000);
   moveMainSection();
+
+  console.log('yes');
   setTimeout(flipAllCards, 3000);
 }
-
-
 
 /**
  * Move between sections
@@ -18,16 +18,6 @@ function moveMainSection() {
   // var positionMain;
   positionMain -= 100;
   main.style.transform = "translateX(" + positionMain + "%)";
-
-  // Start game
-  if (positionMain === -100) {
-    headerExtra.innerHTML = "You only have 1 minute";
-  }
-
-  // Player ranking
-  if (positionMain === -200) {
-    headerExtra.innerHTML = "Top Ranking";
-  }
 }
 
 // Stop the timeCounter once the user has matched all 16 cards
@@ -60,6 +50,9 @@ function removeFlipCard(params) {
   secondCard = undefined;
 }
 
+/**
+ *  Open card
+ */
 function openedCard() {
   arrayCards.push(firstCard);
   firstCard.classList.add('open');
@@ -145,12 +138,12 @@ function addUserList() {
 
 var usersList;
 function sortPlayers() {
-  usersList = users.sort((a, b) => { 
+  usersList = users.sort((a, b) => {
     if (a.time != b.time && a.attempts != b.attempts) {
-      return a.time - b.time; 
+      return a.time - b.time;
     } else if (a.time === b.time && a.attempts != b.attempts) {
-      return a.attempts - b.attempts; 
-    } 
+      return a.attempts - b.attempts;
+    }
   });
 }
 

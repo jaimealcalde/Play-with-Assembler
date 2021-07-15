@@ -2,14 +2,15 @@
  * MODULE - FORMS
  */
 
-.form__title {
-  margin-bottom: 2rem;
+.form{
+  max-width: 580px;
+  margin: 0 auto;
 }
 
 .form__group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
   position: relative;
 }
 
@@ -17,7 +18,7 @@
   font-weight: bold;
   display: block;
   color: #333;
-  margin-bottom: .25rem;
+  margin-bottom: .25em;
   color: #2d3748;
 }
 
@@ -29,8 +30,8 @@
   border: 1px solid #cbd5e0;
   line-height: 1.25;
   background-color: white;
-  padding: .65rem .75rem;
-  border-radius: 0.25rem;
+  padding: .65em .75em;
+  border-radius: 0.25em;
   box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.06);
 }
 
@@ -54,15 +55,17 @@
 }
 
 .form__error-message {
-  font-size: .85rem;
+  font-size: .85em;
   color: red;
+  margin-top: 8px;
+  border-radius: 0.25em;
 }
 
 .form__send {
   background-color: blueviolet;
-  padding: 1rem 2rem;
+  padding: 1em 2em;
   border: none;
-  border-radius: .25rem;
+  border-radius: .25em;
   color: white;
   font-weight: bold;
   display: block;
