@@ -1,13 +1,21 @@
-'use strict';
+"use strict";
 
 /**
  * Start game
  */
+
+var executed = false;
+
 function startGame() {
-  setInterval(setTime, 1000);
+  if (!executed) {
+    setInterval(setTime, 1000);
+    executed = true;
+  }
+  totalSeconds = 0;
   moveMainSection();
 
-  console.log('yes');
+  console.log("yes");
+  addFlipCard();
   setTimeout(flipAllCards, 3000);
 }
 
@@ -34,20 +42,26 @@ function attemptCounter() {
   attempts++;
 }
 
-const cards = document.querySelectorAll('.card');
-cards.forEach(card => card.addEventListener('click', flipCard));
+const cards = document.querySelectorAll(".card");
+cards.forEach((card) => card.addEventListener("click", flipCard));
 
 var firstCard, secondCard;
 var movements = 0;
-var arrayCards = []
+var arrayCards = [];
 
-function removeFlipCard(params) {
-  cards.forEach(card => {
-    card.classList.remove('flip');
+function removeFlipCard() {
+  cards.forEach((card) => {
+    card.classList.remove("flip");
   });
 
   firstCard = undefined;
   secondCard = undefined;
+}
+
+function addFlipCard() {
+  cards.forEach((card) => {
+    card.classList.add("flip");
+  });
 }
 
 /**
@@ -55,11 +69,11 @@ function removeFlipCard(params) {
  */
 function openedCard() {
   arrayCards.push(firstCard);
-  firstCard.classList.add('open');
-  secondCard.classList.add('open');
-  removeFlipCard()
+  firstCard.classList.add("open");
+  secondCard.classList.add("open");
+  removeFlipCard();
 
-  endGame()
+  endGame();
 }
 
 /**
@@ -67,11 +81,11 @@ function openedCard() {
  */
 function endGame() {
   if (arrayCards.length === 1) {
-    user['attempts'] = movements;
-    user['time'] = totalSeconds;
+    user["attempts"] = movements;
+    user["time"] = totalSeconds;
     totalSeconds = 0;
     setTimeout(moveMainSection, 1000);
-    console.log(user)
+    console.log(user);
     addUserList();
     sortPlayers();
     showRanking();
@@ -96,13 +110,13 @@ function checkForMatch() {
  *  Flip card
  */
 function flipCard() {
-  if (this.classList.contains('open')) return null
-  if (this.classList.contains('flip')) return null
-  if (secondCard) return null
+  if (this.classList.contains("open")) return null;
+  if (this.classList.contains("flip")) return null;
+  if (secondCard) return null;
 
-  this.classList.add('flip');
+  this.classList.add("flip");
 
-  if (!firstCard) return firstCard = this;
+  if (!firstCard) return (firstCard = this);
 
   secondCard = this;
 
@@ -113,8 +127,8 @@ function flipCard() {
  *  Flip all cards
  */
 function flipAllCards() {
-  cards.forEach(card => {
-    card.classList.remove('flip');
+  cards.forEach((card) => {
+    card.classList.remove("flip");
   });
 }
 
@@ -122,7 +136,7 @@ function flipAllCards() {
  *  Shuffle cards
  */
 (function shuffleCards() {
-  cards.forEach(card => {
+  cards.forEach((card) => {
     let ramdomPos = Math.floor(Math.random() * 16);
     card.style.order = ramdomPos;
   });
@@ -148,29 +162,53 @@ function sortPlayers() {
   });
 }
 
-// Show ranking of players 
+// Show ranking of players
 function showRanking() {
   if (usersList.length != 0) {
-
     var html = `
     <table class="table">
       <tr class="table__row">
         <th class="table__header">Name</th>
         <th class="table__header">Time</th>
         <th class="table__header"> Attempts</th>
-      </tr>`
+      </tr>`;
 
     for (var i = 0; i < usersList.length; i++) {
-      html +=
-        `<tr class="table__row">
+      html += `<tr class="table__row">
         <td class="table__cell">${usersList[i].username}</td>
         <td class="table__cell">${usersList[i].time}</td>
         <td class="table__cell">${usersList[i].attempts}</td>
-      </tr>`
-    };
+      </tr>`;
+    }
 
-    html += `</table>`
+    html += `</table>`;
 
     containerRanking.innerHTML = html;
   }
+}
+
+// Buttons
+
+var retry = document.getElementById("retry");
+retry.addEventListener("click", retryGame);
+
+function retryGame() {
+  positionMain = 0;
+  main.style.transform = "translateX(" + positionMain + "%)";
+  movements = 0;
+  arrayCards = [];
+  attempts = 0;
+  firstCard = undefined;
+  secondCard = undefined;
+  totalSeconds = 0;
+}
+
+var ranking = document.getElementById("ranking");
+ranking.addEventListener("click", moveToRanking);
+
+function moveToRanking() {
+  sortPlayers();
+  showRanking();
+  positionMain = -200;
+  main.style.transform = "translateX(" + positionMain + "%)";
 }
