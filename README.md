@@ -6,6 +6,7 @@ First, you will need to register your name. After that, the screen will display 
 You will need to match all the cards. The game will end when all cards are already matched.
 
 ## Demo
+[Try demo](https://jaimealcalde.github.io/Play-with-Assembler/)
 
 ## Author
 
