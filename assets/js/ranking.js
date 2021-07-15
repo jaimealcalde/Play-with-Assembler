@@ -23,11 +23,14 @@ function showRanking() {
   if (usersList.length != 0) {
     var html = `
     <table class="table">
-      <tr class="table__row">
-        <th class="table__header">Name</th>
-        <th class="table__header">Time</th>
-        <th class="table__header">Attempts</th>
-      </tr>`;
+      <thead class="table__head">
+        <tr class="table__row">
+          <th class="table__header">Name</th>
+          <th class="table__header">Time</th>
+          <th class="table__header">Attempts</th>
+        </tr>
+      </thead>
+      <tbody class="table__body">`;
 
     for (var i = 0; i < usersList.length; i++) {
       html += `<tr class="table__row">
@@ -37,7 +40,7 @@ function showRanking() {
       </tr>`;
     }
 
-    html += `</table>`;
+    html += `</tbody></table>`;
 
     containerRanking.innerHTML = html;
   }

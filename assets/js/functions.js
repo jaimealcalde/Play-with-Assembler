@@ -42,11 +42,6 @@ function moveMainSection() {
   main.style.transform = "translateX(" + positionMain + "%)";
 }
 
-// Stop the timeCounter once the user has matched all 16 cards
-function stopTimeCounter() {
-  clearInterval(time);
-}
-
 /**
  *  Remove flip to all cards
  */
@@ -84,7 +79,7 @@ function openedCard() {
  *  End game
  */
 function endGame() {
-  if (arrayCards.length === 1) {
+  if (arrayCards.length === 8) {
     user["movements"] = movements;
     user["time"] = totalSeconds;
     totalSeconds = 0;

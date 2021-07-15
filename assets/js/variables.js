@@ -16,22 +16,22 @@ var users = [
   {
     username: "Jaime",
     movements: 20,
-    time: 120,
+    time: 60,
   },
   {
     username: "Tam",
     movements: 15,
-    time: 110,
+    time: 35,
   },
   {
     username: "Marc",
     movements: 12,
-    time: 150,
+    time: 35,
   },
   {
     username: "Pere",
-    movements: 30,
-    time: 130,
+    movements: 25,
+    time: 40,
   }
 ];
 
