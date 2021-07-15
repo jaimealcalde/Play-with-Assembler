@@ -23,6 +23,12 @@ You will need to match all the cards. The game will end when all cards are alrea
 
 ## Screenshot
 
+![Homepage](https://github.com/jaimealcalde/Play-with-Assembler/blob/main/assets/img/homepage.PNG)
+
+![Card Board](https://github.com/jaimealcalde/Play-with-Assembler/blob/main/assets/img/displayCards.PNG)
+
+![Ranking](https://github.com/jaimealcalde/Play-with-Assembler/blob/main/assets/img/ranking.PNG)
+
 ## Clone the repository
 
 git clone https://github.com/github_username/repo_name.git
