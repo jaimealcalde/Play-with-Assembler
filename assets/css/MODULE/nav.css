@@ -1,0 +1,24 @@
+/**
+ * MODULE - NAV
+ */
+
+.nav {
+  display: flex;
+  justify-content: center;
+}
+
+.nav__btn {
+  margin: 1em;
+  padding: 0 2em;
+  border: 0px;
+  border-radius: .25em;
+  margin-top: 40px;
+  box-shadow: 8px 8px 8px -4px rgb(71 182 239 / 53%);
+  font-weight: bold;
+  line-height: 44px;
+}
+
+.nav__btn--blue{
+  background-image: linear-gradient(-136deg, #569cff 0%, #515dec 100%);
+  color: #ffffff;
+}

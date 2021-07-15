@@ -18,20 +18,16 @@
     <!-- Header -->
     <header class="header">
       <h1 class="header__title">Memory Game</h1>
-      <!-- Nav-->
-      <div class="nav">
-        <button class="nav__btn" id="retry">Retry</button>
-        <button class="nav__btn" id="ranking">Ranking</button>
-      </div>
-      <!-- Nav-->
     </header><!-- Header -->
 
     <!-- Main -->
     <main class="main">
 
-      <!-- Form -->
+      <!-- User -->
       <section class="container">
         <h2 class="main__title">Create a new account</h2>
+
+        <!-- Form -->
         <form action="#" class="form" id="form">
           <div class="form__group">
             <label for="username" class="form__label">Username</label>
@@ -50,14 +46,20 @@
                 clip-rule="evenodd" />
             </svg>
           </div>
-          <input type="submit" class="form__send" id="submit" value="Let's Go"/>
-        </form>
-      </section><!-- Form -->
+          <input type="submit" class="form__send" id="submit" value="Let's Go" />
+        </form><!-- Form -->
+
+        <!-- Nav-->
+        <div class="nav">
+          <button class="nav__btn nav__btn--blue" id="userRanking">Ranking</button>
+        </div><!-- Nav-->
+      </section><!-- User -->
 
       <!-- Game -->
       <section class="game container">
         <h2 class="main__title">
-          <label id="minutes">00</label>:<label id="seconds">00</label>
+          Time: <label id="minutes">00</label>:<label id="seconds">00</label> - Attempts: <label
+            id="movements">0</label>
         </h2>
 
         <!-- Board -->
@@ -112,7 +114,11 @@
           </div>
         </div><!-- Board -->
 
-        
+        <!-- Nav-->
+        <div class="nav">
+          <button class="nav__btn nav__btn--blue" id="boardRetry">Retry</button>
+          <button class="nav__btn nav__btn--blue" id="boardRanking">Ranking</button>
+        </div><!-- Nav-->
 
       </section><!-- Game -->
 
@@ -123,6 +129,11 @@
         <div class="container-ranking">
 
         </div>
+
+        <!-- Nav-->
+        <div class="nav">
+          <button class="nav__btn nav__btn--blue" id="rankingRetry">Retry</button>
+        </div><!-- Nav-->
       </section><!-- Ranking -->
 
     </main><!-- Main -->
@@ -130,9 +141,10 @@
 
   <!-- Script tags -->
   <script src="assets/js/variables.js"></script>
-  <script src="assets/js/functions.js"></script>
+  <script src="assets/js/ranking.js"></script>
   <script src="assets/js/timer.js"></script>
   <script src="assets/js/validator.js"></script>
+  <script src="assets/js/functions.js"></script>
 </body>
 
 </html>

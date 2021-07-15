@@ -5,7 +5,7 @@
  */
 var user = {
   username: '',
-  attempts: '',
+  movements: '',
   time: ''
 };
 
@@ -14,19 +14,24 @@ var user = {
  */
 var users = [
   {
-    username: "A",
-    attempts: 20,
-    time: 10,
+    username: "Jaime",
+    movements: 20,
+    time: 120,
   },
   {
-    username: "B",
-    attempts: 20,
-    time: 10,
+    username: "Tam",
+    movements: 15,
+    time: 110,
   },
   {
-    username: "C",
-    attempts: 25,
-    time: 10,
+    username: "Marc",
+    movements: 12,
+    time: 150,
+  },
+  {
+    username: "Pere",
+    movements: 30,
+    time: 130,
   }
 ];
 

@@ -12,10 +12,13 @@ function startGame() {
     executed = true;
   }
   totalSeconds = 0;
+
   moveMainSection();
 
-  console.log("yes");
+  shuffleCards();
+  restartBoard();
   addFlipCard();
+
   setTimeout(flipAllCards, 3000);
 }
 
@@ -23,7 +26,6 @@ function startGame() {
  * Move between sections
  */
 function moveMainSection() {
-  // var positionMain;
   positionMain -= 100;
   main.style.transform = "translateX(" + positionMain + "%)";
 }
@@ -31,15 +33,6 @@ function moveMainSection() {
 // Stop the timeCounter once the user has matched all 16 cards
 function stopTimeCounter() {
   clearInterval(time);
-}
-
-/**
- *  Attempt Counter
- */
-var attempts = 0;
-function attemptCounter() {
-  // increase the number of attempts for every pair checked
-  attempts++;
 }
 
 const cards = document.querySelectorAll(".card");
@@ -81,12 +74,12 @@ function openedCard() {
  */
 function endGame() {
   if (arrayCards.length === 1) {
-    user["attempts"] = movements;
+    user["movements"] = movements;
     user["time"] = totalSeconds;
     totalSeconds = 0;
     setTimeout(moveMainSection, 1000);
-    console.log(user);
-    addUserList();
+
+    addUserToRanking();
     sortPlayers();
     showRanking();
   }
@@ -97,13 +90,23 @@ function endGame() {
  */
 function checkForMatch() {
   if (firstCard.dataset.name != secondCard.dataset.name) {
-    movements++;
+    addMovement();
     setTimeout(removeFlipCard, 1000);
   }
 
   if (firstCard.dataset.name === secondCard.dataset.name) {
+    addMovement();
     openedCard();
   }
+}
+
+/**
+ *  Add movement
+ */
+function addMovement() {
+  movements++;
+  let movementsDOM = document.getElementById('movements');
+  movementsDOM.innerHTML = movements;
 }
 
 /**
@@ -133,79 +136,57 @@ function flipAllCards() {
 }
 
 /**
+ *  Restart Board
+ */
+function restartBoard() {
+  cards.forEach((card) => {
+    card.classList.remove("open");
+  });
+}
+
+/**
  *  Shuffle cards
  */
-(function shuffleCards() {
+function shuffleCards() {
   cards.forEach((card) => {
     let ramdomPos = Math.floor(Math.random() * 16);
     card.style.order = ramdomPos;
   });
-})();
-
-/**
- *  Ranking
- */
-
-// Everytime a player finishes his game, his info will be save to the list
-function addUserList() {
-  users.push(user);
-}
-
-var usersList;
-function sortPlayers() {
-  usersList = users.sort((a, b) => {
-    if (a.time != b.time && a.attempts != b.attempts) {
-      return a.time - b.time;
-    } else if (a.time === b.time && a.attempts != b.attempts) {
-      return a.attempts - b.attempts;
-    }
-  });
-}
-
-// Show ranking of players
-function showRanking() {
-  if (usersList.length != 0) {
-    var html = `
-    <table class="table">
-      <tr class="table__row">
-        <th class="table__header">Name</th>
-        <th class="table__header">Time</th>
-        <th class="table__header"> Attempts</th>
-      </tr>`;
-
-    for (var i = 0; i < usersList.length; i++) {
-      html += `<tr class="table__row">
-        <td class="table__cell">${usersList[i].username}</td>
-        <td class="table__cell">${usersList[i].time}</td>
-        <td class="table__cell">${usersList[i].attempts}</td>
-      </tr>`;
-    }
-
-    html += `</table>`;
-
-    containerRanking.innerHTML = html;
-  }
-}
+};
 
 // Buttons
 
-var retry = document.getElementById("retry");
-retry.addEventListener("click", retryGame);
+var userRanking = document.getElementById("userRanking");
+var boardRanking = document.getElementById("boardRanking");
+var boardRetry = document.getElementById("boardRetry");
+var rankingRetry = document.getElementById("rankingRetry");
 
+userRanking.addEventListener("click", moveToRanking);
+boardRanking.addEventListener("click", moveToRanking);
+boardRetry.addEventListener("click", retryGame);
+rankingRetry.addEventListener("click", retryGame);
+
+/**
+ *  Retry game
+ */
 function retryGame() {
   positionMain = 0;
   main.style.transform = "translateX(" + positionMain + "%)";
   movements = 0;
   arrayCards = [];
-  attempts = 0;
   firstCard = undefined;
   secondCard = undefined;
   totalSeconds = 0;
+  user = {
+    username: '',
+    movements: '',
+    time: ''
+  };
 }
 
-var ranking = document.getElementById("ranking");
-ranking.addEventListener("click", moveToRanking);
-
+/**
+ *  Move to ranking
+ */
 function moveToRanking() {
   sortPlayers();
   showRanking();
