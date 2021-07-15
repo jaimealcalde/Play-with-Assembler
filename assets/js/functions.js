@@ -127,6 +127,7 @@ function flipAllCards() {
     card.style.order = ramdomPos;
   });
 })();
+
 /**
  *  Ranking
  */

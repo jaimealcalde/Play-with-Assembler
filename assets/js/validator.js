@@ -74,7 +74,6 @@ function setStatus(field, message, status) {
  */
 const form = document.querySelector('.form');
 const username = document.querySelector('#username');
-const validator = new FormData(form);
 
 /**
  * Event listeners

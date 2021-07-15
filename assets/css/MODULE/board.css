@@ -54,18 +54,6 @@
   visibility: visible;
 }
 
-.animated {
-  -webkit-animation-duration: 1s;
-  animation-duration: 1s;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-}
-
-.pulse {
-  -webkit-animation-name: pulse;
-  animation-name: pulse;
-}
-
 @media (max-width: 575px) {
   .board{
     padding: 7.5px;
