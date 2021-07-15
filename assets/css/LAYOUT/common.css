@@ -2,16 +2,25 @@
  * LAYOUT - RESET
  */
 
-.main-container {
-}
-
 .container {
   max-width: 460px;
   margin: 0 auto;
   padding: 0 2em;
 }
 
+.main {
+  display: flex;
+  flex-direction: row;
+  transform: translateX(0);
+  transition: 0.25s ease-in-out;
+}
+
 .main__title {
+  max-width: 580px;
+  margin: 0 auto 1em;
+}
+
+.main__subtitle{
   max-width: 580px;
   margin: 0 auto 1em;
 }

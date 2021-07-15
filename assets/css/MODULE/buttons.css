@@ -1,0 +1,7 @@
+/**
+ * MODULE - BUTTONS
+ */
+
+.btn:hover {
+  filter: brightness(105%);
+}

@@ -46,7 +46,7 @@
                 clip-rule="evenodd" />
             </svg>
           </div>
-          <input type="submit" class="form__send" id="submit" value="Let's Go" />
+          <input type="submit" class="form__send form__send--green" id="submit" value="Let's Go" />
         </form><!-- Form -->
 
         <!-- Nav-->
@@ -58,59 +58,62 @@
       <!-- Game -->
       <section class="game container">
         <h2 class="main__title">
+          User: <label id="label-username"></label>
+        </h2>
+        <h3 class="main__subtitle">
           Time: <label id="minutes">00</label>:<label id="seconds">00</label> - Attempts: <label
             id="movements">0</label>
-        </h2>
+        </h3>
 
         <!-- Board -->
         <div class="board board--gray">
           <div class="card card--white flip" data-name="boar">
-            <img class="card__img card__img--front" src="assets/media/boar.svg" alt="Boar" />
+            <img class="card__img" src="assets/media/boar.svg" alt="Boar" />
           </div>
           <div class="card card--white flip" data-name="horse">
-            <img class="card__img card__img--front" src="assets/media/horse.svg" alt="Horse" />
+            <img class="card__img" src="assets/media/horse.svg" alt="Horse" />
           </div>
           <div class="card card--white flip" data-name="lion">
-            <img class="card__img card__img--front" src="assets/media/lion.svg" alt="Lion" />
+            <img class="card__img" src="assets/media/lion.svg" alt="Lion" />
           </div>
           <div class="card card--white flip" data-name="rhino">
-            <img class="card__img card__img--front" src="assets/media/rhino.svg" alt="Rhino" />
+            <img class="card__img" src="assets/media/rhino.svg" alt="Rhino" />
           </div>
           <div class="card card--white flip" data-name="mythical">
-            <img class="card__img card__img--front" src="assets/media/mythical-creature.svg" alt="Mythical creature" />
+            <img class="card__img" src="assets/media/mythical-creature.svg" alt="Mythical creature" />
           </div>
           <div class="card card--white flip" data-name="octopus">
-            <img class="card__img card__img--front" src="assets/media/octopus.svg" alt="Octopus" />
+            <img class="card__img" src="assets/media/octopus.svg" alt="Octopus" />
           </div>
           <div class="card card--white flip" data-name="penguin">
-            <img class="card__img card__img--front" src="assets/media/penguin.svg" alt="Penguin" />
+            <img class="card__img" src="assets/media/penguin.svg" alt="Penguin" />
           </div>
           <div class="card card--white flip" data-name="bee">
-            <img class="card__img card__img--front" src="assets/media/bee.svg" alt="Bee" />
+            <img class="card__img" src="assets/media/bee.svg" alt="Bee" />
           </div>
           <div class="card card--white flip" data-name="boar">
-            <img class="card__img card__img--front" src="assets/media/boar.svg" alt="Boar" />
+            <img class="card__img" src="assets/media/boar.svg" alt="Boar" />
           </div>
           <div class="card card--white flip" data-name="horse">
-            <img class="card__img card__img--front" src="assets/media/horse.svg" alt="Horse" />
+            <img class="card__img" src="assets/media/horse.svg" alt="Horse" />
           </div>
           <div class="card card--white flip" data-name="lion">
-            <img class="card__img card__img--front" src="assets/media/lion.svg" alt="Lion" />
+            <img class="card__img" src="assets/media/lion.svg" alt="Lion" />
           </div>
           <div class="card card--white flip" data-name="rhino">
-            <img class="card__img card__img--front" src="assets/media/rhino.svg" alt="Rhino" />
+            <img class="card__img" src="assets/media/rhino.svg" alt="Rhino" />
           </div>
           <div class="card card--white flip" data-name="mythical">
-            <img class="card__img card__img--front" src="assets/media/mythical-creature.svg" alt="Mythical creature" />
+            <img class="card__img" src="assets/media/mythical-creature.svg" alt="Mythical creature" />
           </div>
           <div class="card card--white flip" data-name="octopus">
-            <img class="card__img card__img--front" src="assets/media/octopus.svg" alt="Octopus" />
+            <img class="card__img" src="assets/media/octopus.svg" alt="Octopus" />
           </div>
           <div class="card card--white flip" data-name="penguin">
-            <img class="card__img card__img--front" src="assets/media/penguin.svg" alt="Penguin" />
+            <img class="card__img" src="assets/media/penguin.svg" alt="Penguin" />
           </div>
           <div class="card card--white flip" data-name="bee">
-            <img class="card__img card__img--front" src="assets/media/bee.svg" alt="Bee" />
+            <img class="card__img" src="assets/media/bee.svg" alt="Bee" />
           </div>
         </div><!-- Board -->
 
@@ -126,9 +129,9 @@
       <section class="container">
         <h2 class="main__title">Ranking</h2>
 
+        <!-- Table -->
         <div class="container-ranking">
-
-        </div>
+        </div><!-- Table -->
 
         <!-- Nav-->
         <div class="nav">
