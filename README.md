@@ -31,6 +31,7 @@ You will need to match all the cards. The game will end when all cards are alrea
 
 ## Clone the repository
 
-git clone https://github.com/github_username/repo_name.git
+git clone https://github.com/jaimealcalde/Play-with-Assembler.git
+
 
 
