@@ -35,11 +35,17 @@ var users = [
   }
 ];
 
+/**
+ * Global variables
+ */
+var executed = false;
+var firstCard, secondCard;
+var movements = 0;
+var arrayCards = [];
 
 /**
  * Variables of the DOM
  */
 var main = document.querySelector(".main"); // access the main section
 var positionMain = 0; // position of main to move the sections
-var headerExtra = document.querySelector(".header__extra"); // access extra information on header
 var containerRanking = document.querySelector(".container-ranking");

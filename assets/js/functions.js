@@ -1,11 +1,14 @@
 "use strict";
 
 /**
+ * All cards
+ */
+const cards = document.querySelectorAll(".card");
+cards.forEach((card) => card.addEventListener("click", flipCard));
+
+/**
  * Start game
  */
-
-var executed = false;
-
 function startGame() {
   if (!executed) {
     setInterval(setTime, 1000);
@@ -13,13 +16,22 @@ function startGame() {
   }
   totalSeconds = 0;
 
+  printUsername()
   moveMainSection();
 
   shuffleCards();
   restartBoard();
-  addFlipCard();
 
-  setTimeout(flipAllCards, 3000);
+  addFlipToAllCards();
+  setTimeout(removeFlipToAllCards, 3000);
+}
+
+/**
+ * Print username in screen
+ */
+function printUsername() {
+  let usernameDOM = document.getElementById('label-username');
+  usernameDOM.innerHTML = user.username;
 }
 
 /**
@@ -35,14 +47,10 @@ function stopTimeCounter() {
   clearInterval(time);
 }
 
-const cards = document.querySelectorAll(".card");
-cards.forEach((card) => card.addEventListener("click", flipCard));
-
-var firstCard, secondCard;
-var movements = 0;
-var arrayCards = [];
-
-function removeFlipCard() {
+/**
+ *  Remove flip to all cards
+ */
+function removeFlipToAllCards() {
   cards.forEach((card) => {
     card.classList.remove("flip");
   });
@@ -51,7 +59,10 @@ function removeFlipCard() {
   secondCard = undefined;
 }
 
-function addFlipCard() {
+/**
+ *  Add flip to all cards
+ */
+function addFlipToAllCards() {
   cards.forEach((card) => {
     card.classList.add("flip");
   });
@@ -64,7 +75,7 @@ function openedCard() {
   arrayCards.push(firstCard);
   firstCard.classList.add("open");
   secondCard.classList.add("open");
-  removeFlipCard();
+  removeFlipToAllCards();
 
   endGame();
 }
@@ -91,7 +102,7 @@ function endGame() {
 function checkForMatch() {
   if (firstCard.dataset.name != secondCard.dataset.name) {
     addMovement();
-    setTimeout(removeFlipCard, 1000);
+    setTimeout(removeFlipToAllCards, 1000);
   }
 
   if (firstCard.dataset.name === secondCard.dataset.name) {
@@ -124,15 +135,6 @@ function flipCard() {
   secondCard = this;
 
   checkForMatch();
-}
-
-/**
- *  Flip all cards
- */
-function flipAllCards() {
-  cards.forEach((card) => {
-    card.classList.remove("flip");
-  });
 }
 
 /**

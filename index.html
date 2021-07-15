@@ -46,7 +46,7 @@
                 clip-rule="evenodd" />
             </svg>
           </div>
-          <input type="submit" class="form__send" id="submit" value="Let's Go" />
+          <input type="submit" class="form__send form__send--green" id="submit" value="Let's Go" />
         </form><!-- Form -->
 
         <!-- Nav-->
@@ -58,9 +58,12 @@
       <!-- Game -->
       <section class="game container">
         <h2 class="main__title">
+          User: <label id="label-username"></label>
+        </h2>
+        <h3 class="main__subtitle">
           Time: <label id="minutes">00</label>:<label id="seconds">00</label> - Attempts: <label
             id="movements">0</label>
-        </h2>
+        </h3>
 
         <!-- Board -->
         <div class="board board--gray">
