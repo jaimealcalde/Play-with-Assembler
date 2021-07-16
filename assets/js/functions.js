@@ -170,6 +170,8 @@ function retryGame() {
   positionMain = 0;
   main.style.transform = "translateX(" + positionMain + "%)";
   movements = 0;
+  let movementsDOM = document.getElementById('movements');
+  movementsDOM.innerHTML = movements;
   arrayCards = [];
   firstCard = undefined;
   secondCard = undefined;
